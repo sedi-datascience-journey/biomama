@@ -58,7 +58,6 @@ By following these steps, you'll:
 •	**Write Your Post:** Add the following content to the text box:
 
 ```markdown
-
  ---
 layout: post
 title: "My First Bioinformatics Blog Post"
