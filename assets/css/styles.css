@@ -1,12 +1,12 @@
-pre {
-    background-color: #f0f0f0;
+.highlight pre, pre {
+    background-color: #f0f0f0 !important;
     padding: 10px;
     border-radius: 5px;
     overflow-x: auto;
 }
 
-code {
-    background-color: #f0f0f0;
+.highlight code, code {
+    background-color: #f0f0f0 !important;
     padding: 2px 4px;
     border-radius: 3px;
 }
