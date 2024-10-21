@@ -55,7 +55,6 @@ Well, despite checking all these steps, my post was still missing! It felt like 
 In a last-ditch effort, I tried adding a `default.html` file in the `_layouts` folder. Here's the code I used:
 
 ```html
-
 <!doctype html>
 <html lang="{{ site.lang | default: "en-US" }}">
 <head>
@@ -76,6 +75,7 @@ In a last-ditch effort, I tried adding a `default.html` file in the `_layouts` f
     <header>
       <h1 class="header">{{ site.title | default: site.github.repository_name }}</h1>
       <p class="header">{{ site.description | default: site.github.project_tagline }}</p>
+
       <ul>
         {% if site.show_downloads %}
           <li class="download"><a class="buttons" href="{{ site.github.zip_url }}">Download ZIP</a></li>
@@ -83,18 +83,44 @@ In a last-ditch effort, I tried adding a `default.html` file in the `_layouts` f
         {% endif %}
         <li><a class="buttons github" href="{{ site.github.repository_url }}">View On GitHub</a></li>
       </ul>
+
+      {% if site.github.is_project_page %}
+        <p class="header">This project is maintained by <a class="header name" href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
+      {% endif %}
+
+      {% if site.github.is_user_page %}
+        <ul>
+          <li><a class="buttons github" href="{{ site.github.owner_url }}">GitHub Profile</a></li>
+        </ul>
+      {% endif %}
     </header>
 
     <section>
       {{ content }}
     </section>
 
+    <!-- Blog Section -->
+    <section class="blog-section">
+      <h2>Blog</h2>
+      <ul class="post-list">
+        {% for post in site.posts %}
+          <li>
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p>{{ post.excerpt }}</p>
+            <p><small>{{ post.date | date: "%B %d, %Y" }}</small></p>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
     <footer>
       <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
     </footer>
   </div>
+  <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 </body>
 </html>
+
 ```
 
 And... still nothing. My first post was determined to stay invisible!
